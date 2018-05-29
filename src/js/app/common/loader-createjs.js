@@ -6,7 +6,6 @@ define([
     'utils/frameplayer',
     'source',
     'text!../components/common/loader.html!strip',
-    'jquery.browser',
     'helper/lakers',
     'utils/sword'],
 ($, createjs, frameplayer, source, htmlLoader) => {
@@ -14,15 +13,10 @@ define([
     const laker = {};
 
     let callback = null;
-    let movie = null;
 
     // 挂载
     laker.mount = function(cb) {
         callback = cb;
-        // 如果小于ie9，则取消loading（createjs不支持）;
-        if ($.browser.msie && $.browser.version < 9) {
-            return cb();
-        }
 
         this.preload();
     };
@@ -34,23 +28,6 @@ define([
         loader.on('complete', () => {
             world.root.append(htmlLoader);
             this.$root = world.root.find('.sys-loader');
-
-            movie = frameplayer({
-                target: this.$root.find('.movie'),
-                total: 66,
-                row: 10,
-                loop: true,
-                loopDelay: 0,
-                // loopTimes:3,
-                fps: 6,
-                scale: 2,
-                autosize: false,
-                onProgress(frame) {
-                    // console.log(frame);
-                }
-            });
-
-            movie.play();
             this.mainload();
         });
         loader.loadManifest(source.preload, true, 'assets/img/');
@@ -60,12 +37,17 @@ define([
     laker.mainload = function() {
         const loader = createjsLoader();
 
+        const voiceId = world.sword.getUrlParam('voiceId') || 1;
+
+        // 音频资源在本地
+        loader.installPlugin(createjs.Sound);
+        loader.loadFile({ id: 'voice', src: `assets/audio/${voiceId}.mp3` });
+
         loader.on('progress', onProgress);
         loader.on('complete', onComplete);
         loader.loadManifest(source.mainload, true, 'assets/img/');
 
         function onComplete() {
-            movie.stop();
             laker.$root.fadeOut(() => laker.destroy());
             world.sword.tryFun(callback);
             console.log('资源加载完成');

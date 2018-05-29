@@ -106,12 +106,12 @@
 
         'block': 'app/common/block',
         'music': 'app/common/music',
-        // 'loader': 'app/common/loader-createjs',
-        'loader': 'app/common/loader-pixi',
+        'loader': 'app/common/loader-createjs',
+        // 'loader': 'app/common/loader-pixi',
         'video': 'app/common/video',
 
         'source' : 'app/source',
-        'index' : 'app/index',
+        'index' : 'app/usr/index',
 
         'script': 'app/script',
     },

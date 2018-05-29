@@ -1,0 +1,54 @@
+@import '../config.less';
+
+.usr-index {
+    @url: '@{g-baseUrl}/assets/img/main/bg.jpg';
+    @url-local: '../assets/img/main/bg.jpg';
+
+    width: 100%;
+    height: 100%;
+    background-image: url(@url);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: #000039;
+    position: relative;
+    text-align: center;
+
+    .logo {
+        @url: '@{g-baseUrl}/assets/img/main/logo.png';
+        @url-local: '../assets/img/main/logo.png';
+
+        width: image-width(@url-local);
+        height: image-height(@url-local);
+        background-image: url(@url);
+        background-size: contain;
+        position: absolute;
+        top: 0;
+        left: 90px;
+    }
+
+    .jd {
+        @url: '@{g-baseUrl}/assets/img/main/jd.jpg';
+        @url-local: '../assets/img/main/jd.jpg';
+
+        width: image-width(@url-local);
+        height: image-height(@url-local);
+        background-image: url(@url);
+        background-size: contain;
+        position: absolute;
+        top: 0;
+        right: 90px;
+    }
+
+    .icon {
+        position: relative;
+        top: 740px;
+    }
+
+    .icon-play {
+        background-position-y: -100%;
+    }
+
+    .icon-stop {
+        background-position-y: 0;
+    }
+}
