@@ -39,9 +39,26 @@
         right: 90px;
     }
 
+    .button {
+        position: relative;
+        top: 675px;
+        text-align: center;
+
+        span {
+            @url: '@{g-baseUrl}/assets/img/main/button.png';
+            @url-local: '../assets/img/main/button.png';
+
+            background-image: url(@url);
+            width: image-width(@url-local);
+            height: image-height(@url-local);
+            display: inline-block;
+            background-size: 100% auto;
+        }
+    }
+
     .icon {
         position: relative;
-        top: 740px;
+        top: 890px;
     }
 
     .icon-play {

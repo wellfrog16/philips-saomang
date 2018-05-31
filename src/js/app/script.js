@@ -14,7 +14,7 @@ define([
         // 加载jquery插件
         sword.jqueryPlugins();
         // 自动修正rem
-        sword.fixRem();
+        sword.fixRem(750, 75);
         world.blade.share();
 
         // 如果是手机端，加载横屏提示

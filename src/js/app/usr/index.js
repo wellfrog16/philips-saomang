@@ -35,6 +35,10 @@ define([
                 this.$root.find('.icon').removeClass('icon-stop').addClass('icon-play');
             }
         });
+
+        this.$root.find('.button span').hammer().on('tap', () => {
+            window.open('http://oralhealthcaredcs.bysening.com/jd/');
+        });
     };
 
     river.show = () => {
