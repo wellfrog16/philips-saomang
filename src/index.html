@@ -33,5 +33,23 @@
     <!-- end -->
 </head>
 <body>
+    <!-- <div class="sys-music"><audio id="h5-bg" src="./assets/audio/1.mp3" preload="auto" loop="loop" autoplay="autoplay"></audio></div> -->
+    <div class="sys-music"><audio id="h5-voice" preload="auto" loop="loop" autoplay="autoplay"></audio></div>
+    <script>
+        var voiceId = getUrlParam('voiceId');
+        var audio = document.getElementById('h5-voice');
+        
+        audio.src = './assets/audio/' + voiceId + '.mp3';
+
+        document.addEventListener("WeixinJSBridgeReady", function (){
+            audio.play();        
+        }, false);
+
+        function getUrlParam(name) {
+            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)'); // 构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+            if (r != null) return decodeURIComponent(r[2]); return null; // 返回参数值
+        }
+    </script>
 </body>
 </html>

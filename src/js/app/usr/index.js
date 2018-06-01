@@ -21,16 +21,16 @@ define([
         }
     };
 
-    let isPlaying = false;
+    let isPlaying = true;
 
     river.bind = function() {
         this.$root.find('.icon').hammer().on('tap', () => {
             if (isPlaying) {
-                createjs.Sound.stop('voice');
+                $('#h5-voice')[0].pause();
                 isPlaying = false;
                 this.$root.find('.icon').removeClass('icon-play').addClass('icon-stop');
             } else {
-                createjs.Sound.play('voice');
+                $('#h5-voice')[0].play();
                 isPlaying = true;
                 this.$root.find('.icon').removeClass('icon-stop').addClass('icon-play');
             }
