@@ -50,7 +50,7 @@ define([
         function onComplete() {
             laker.$root.fadeOut(() => laker.destroy());
             world.sword.tryFun(callback);
-            console.log('资源加载完成');
+            // console.log('资源加载完成');
         }
 
         function onProgress() {
